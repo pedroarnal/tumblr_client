@@ -5,6 +5,9 @@ require 'json'
 module Tumblr
   module Request
 
+    SUCCESS_CODES = [200, 201].freeze
+    REDIRECT_STATUS = 301
+
     # Perform a get request and return the raw response
     def get_response(path, params = {})
       connection.get do |req|
@@ -16,7 +19,7 @@ module Tumblr
     # get a redirect url
     def get_redirect_url(path, params = {})
       response = get_response path, params
-      if response.status == 301
+      if response.status == REDIRECT_STATUS
         response.headers['Location']
       else
         response.body['meta']
@@ -63,7 +66,7 @@ module Tumblr
     end
 
     def respond(response)
-      if [201, 200].include?(response.status)
+      if SUCCESS_CODES.include?(response.status)
         response.body['response']
       else
         # surface the meta alongside response

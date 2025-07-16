@@ -33,7 +33,7 @@ else
     print 'OAuth Consumer secret: '
     config.consumer_secret = gets.chomp
 
-    site = "http://#{host}"
+    site = "https://#{host}"
     consumer = OAuth::Consumer.new(config.consumer_key, config.consumer_secret, :site => site)
     request_token = consumer.get_request_token :exclude_callback => true
 
@@ -62,7 +62,7 @@ else
 end
 
 
-ENV['IRBRC'] = '.irbrc' if File.exists? '.irbrc'
+ENV['IRBRC'] = '.irbrc' if File.exist? '.irbrc'
 
 puts %q[
         .                                 .o8       oooo

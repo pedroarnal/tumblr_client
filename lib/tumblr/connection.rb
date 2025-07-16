@@ -1,31 +1,26 @@
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/multipart'
+require 'faraday/oauth1'
 
 module Tumblr
   module Connection
 
-    def connection(options={})
+    def connection(options = {})
       options = options.clone
 
-      default_options = {
-        :headers => {
-          :accept => 'application/json',
-          :user_agent => "tumblr_client/#{Tumblr::VERSION}"
-        },
-        :url => "#{api_scheme}://#{api_host}/"
-      }
-
-      client = Faraday.default_adapter
-
-      Faraday.new(default_options.merge(options)) do |conn|
-        data = { :api_host => api_host, :ignore_extra_keys => true}.merge(credentials)
-        unless credentials.empty?
-          conn.request :oauth, data
-        end
+      Faraday.new(url: "#{api_scheme}://#{api_host}/") do |conn|
+        conn.request :oauth1, 'header', **credentials
         conn.request :multipart
         conn.request :url_encoded
-        conn.response :json, :content_type => /\bjson$/
-        conn.adapter client
+        conn.response :json, content_type: /\bjson$/
+        conn.use Faraday::Response::RaiseError
+        conn.adapter Faraday.default_adapter
+        conn.headers.update(
+          {
+            "accept" => 'application/json',
+            "user_agent" => "tumblr_client/#{Tumblr::VERSION}"
+          }.merge(options)
+        )
       end
     end
 

@@ -3,5 +3,6 @@ if ENV['COV'] == '1'
   SimpleCov.start
 end
 
+require 'json'
 require 'ostruct'
 require_relative '../lib/tumblr_client'

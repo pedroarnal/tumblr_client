@@ -19,9 +19,9 @@ describe Tumblr::User do
     context 'when using options that are not allowed' do
 
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.dashboard :not => 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
 
     end

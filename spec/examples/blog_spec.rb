@@ -67,9 +67,9 @@ describe Tumblr::Blog do
     context 'with invalid parameters' do
 
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.followers blog_name, :not => 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
 
     end
@@ -94,9 +94,9 @@ describe Tumblr::Blog do
   describe :blow_following do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.blog_following blog_name, :not => 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -114,9 +114,9 @@ describe Tumblr::Blog do
   describe :followed_by do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.followed_by blog_name, other_blog_name, :not => 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -136,9 +136,9 @@ describe Tumblr::Blog do
     context 'with invalid parameters' do
 
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.blog_likes blog_name, :not => 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
 
     end
@@ -201,9 +201,9 @@ describe Tumblr::Blog do
   describe :get_post do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.get_post blog_name, post_id, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -221,9 +221,9 @@ describe Tumblr::Blog do
   describe :notes do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.notes blog_name, post_id, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -248,9 +248,9 @@ describe Tumblr::Blog do
       context 'when using parameters other than limit & offset' do
 
         it 'should raise an error' do
-          expect(lambda {
+          expect {
             client.send type, blog_name, :not => 'an option'
-          }).to raise_error ArgumentError
+          }.to raise_error ArgumentError
         end
 
       end
@@ -275,9 +275,9 @@ describe Tumblr::Blog do
   describe :reorder_queue do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.reorder_queue blog_name, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -303,9 +303,9 @@ describe Tumblr::Blog do
   describe :notifications do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.notifications blog_name, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -322,9 +322,9 @@ describe Tumblr::Blog do
   describe :blocks do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.blocks blog_name, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -342,9 +342,9 @@ describe Tumblr::Blog do
   describe :block do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.block blog_name, other_blog_name, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 
@@ -362,9 +362,9 @@ describe Tumblr::Blog do
   describe :unblock do
     context 'with invalid parameters' do
       it 'should raise an error' do
-        expect(lambda {
+        expect {
           client.unblock blog_name, other_blog_name, not: 'an option'
-        }).to raise_error ArgumentError
+        }.to raise_error ArgumentError
       end
     end
 

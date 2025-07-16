@@ -110,9 +110,9 @@ describe Tumblr::Post do
       context 'when passing an option which is not allowed' do
 
         it 'should raise an error' do
-          expect(lambda {
+          expect {
             client.send type, blog_name, :not => 'an option'
-          }).to raise_error ArgumentError
+          }.to raise_error ArgumentError
         end
 
       end
@@ -158,9 +158,9 @@ describe Tumblr::Post do
     context 'with an invalid post type' do
 
       it 'should raise an error' do
-        expect(lambda do
+        expect {
           client.create_post(:fake, blog_name, args)
-        end).to raise_error ArgumentError, '"fake" is not a valid post type'
+        }.to raise_error ArgumentError, '"fake" is not a valid post type'
       end
 
     end
@@ -175,9 +175,9 @@ describe Tumblr::Post do
       context 'when passing an option which is not allowed' do
 
         it 'should raise an error' do
-          expect(lambda {
+          expect {
             client.send type, blog_name, :not => 'an option'
-          }).to raise_error ArgumentError
+          }.to raise_error ArgumentError
         end
 
       end
@@ -265,9 +265,9 @@ describe Tumblr::Post do
       context 'when passing colliding options' do
 
         it 'should get an error when passing data & source' do
-          expect(lambda {
+          expect {
             client.send type, blog_name, :data => 'hi', :source => 'bye'
-          }).to raise_error ArgumentError
+          }.to raise_error ArgumentError
         end
 
       end

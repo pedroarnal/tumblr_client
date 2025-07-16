@@ -45,13 +45,13 @@ module Tumblr
     def add_filtered_content(filtered_strings=nil, options={})
       validate_options([:filtered_content], options)
       options[:filtered_content] ||= filtered_strings
-      post('v2/user/filtered_content', options)
+      post('v2/user/filtered_content', **options)
     end
 
     def delete_filtered_content(filtered_strings, options={})
       validate_options([:filtered_content], options)
       options[:filtered_content] ||= filtered_strings
-      delete('v2/user/filtered_content', options)
+      delete('v2/user/filtered_content', **options)
     end
 
   end

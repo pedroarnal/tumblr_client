@@ -24,19 +24,19 @@ module Tumblr
     end
 
     def follow(url)
-      post('v2/user/follow', :url => url)
+      post('v2/user/follow', url: url)
     end
 
     def unfollow(url)
-      post('v2/user/unfollow', :url => url)
+      post('v2/user/unfollow', url: url)
     end
 
     def like(id, reblog_key)
-      post('v2/user/like', :id => id, :reblog_key => reblog_key)
+      post('v2/user/like', id: id, reblog_key: reblog_key)
     end
 
     def unlike(id, reblog_key)
-      post('v2/user/unlike', :id => id, :reblog_key => reblog_key)
+      post('v2/user/unlike', id: id, reblog_key: reblog_key)
     end
 
     def filtered_content

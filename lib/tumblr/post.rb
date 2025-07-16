@@ -21,7 +21,7 @@ module Tumblr
     end
 
     def delete(blog_name, id)
-      post(blog_path(blog_name, 'post/delete'), :id => id)
+      post(blog_path(blog_name, 'post/delete'), id: id)
     end
 
     def photo(blog_name, options = {})

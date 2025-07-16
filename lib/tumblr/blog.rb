@@ -5,7 +5,7 @@ module Tumblr
 
     # Gets the info about the blog
     def blog_info(blog_name)
-      get(blog_path(blog_name, 'info'), :api_key => @consumer_key)
+      get(blog_path(blog_name, 'info'), api_key: @consumer_key)
     end
 
     # Gets the avatar URL of specified size
@@ -41,7 +41,7 @@ module Tumblr
       validate_options([:limit, :offset, :before, :after], options)
       url = blog_path(blog_name, 'likes')
 
-      params = { :api_key => @consumer_key }
+      params = { api_key: @consumer_key }
       params.merge! options
       get(url, params)
     end
@@ -53,7 +53,7 @@ module Tumblr
         url = "#{url}/#{options[:type]}"
       end
 
-      params = { :api_key => @consumer_key }
+      params = { api_key: @consumer_key }
       params.merge! options
       get(url, params)
     end

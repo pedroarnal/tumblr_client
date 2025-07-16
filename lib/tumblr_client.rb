@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'tumblr/client'
 require 'tumblr/config'
 

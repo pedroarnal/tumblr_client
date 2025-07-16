@@ -1,6 +1,8 @@
 *.gem
 .DS_Store
 
+.idea
+
 *.swp
 *.swo
 
@@ -11,3 +13,7 @@ coverage
 Gemfile.lock
 
 .bundle
+
+vendor
+
+.ruby-version

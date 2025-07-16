@@ -4,6 +4,10 @@
 
 This is the official Ruby wrapper for the Tumblr v2 API. It supports all endpoints currently available on the [Tumblr API](https://www.tumblr.com/docs/en/api/v2).
 
+## AI Assistant Use Disclaimer
+
+@pedroarnal has used Claude Code, an AI assistant by Anthropic, to support the codebase update to Ruby 3.4. The AI is used as a development tool while maintaining human oversight of all changes.
+
 ## Installation
 
 ```
@@ -89,7 +93,7 @@ No request is too small and I encourage everyone to get involved. As you can see
 
 ### Requirements
 
-* Ruby 1.9.x to 3.x.x
+* Ruby >= 3.4.0
 
 ---
 

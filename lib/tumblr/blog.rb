@@ -98,6 +98,16 @@ module Tumblr
       get(blog_path(blog_name, 'posts/queue/settings'))
     end
 
+    # Pause blog's queue (if authorized)
+    def pause_queue(blog_name)
+      post(blog_path(blog_name, 'posts/queue/state'), paused: true)
+    end
+
+    # Resume blog's queue (if authorized)
+    def resume_queue(blog_name)
+      post(blog_path(blog_name, 'posts/queue/state'), paused: false)
+    end
+
     # Get drafts posts from blog (if authorized)
     def draft(blog_name, **options)
       validate_options([:limit, :before_id], options)

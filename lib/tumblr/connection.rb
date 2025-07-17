@@ -7,9 +7,7 @@ require 'faraday/oauth1'
 module Tumblr
   module Connection
 
-    def connection(options = {})
-      options = options.clone
-
+    def connection
       Faraday.new(url: "#{api_scheme}://#{api_host}/") do |conn|
         conn.request :oauth1, 'header', **credentials
         conn.request :multipart
@@ -19,9 +17,9 @@ module Tumblr
         conn.adapter Faraday.default_adapter
         conn.headers.update(
           {
-            "accept" => 'application/json',
-            "user_agent" => "tumblr_client/#{Tumblr::VERSION}"
-          }.merge(options)
+            'accept' => 'application/json',
+            'user_agent' => "tumblr_client/#{Tumblr::VERSION}"
+          }
         )
       end
     end

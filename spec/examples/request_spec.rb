@@ -12,7 +12,7 @@ describe Tumblr::Request do
 
         it 'should return the meta object' do
           data = { :message => 'ohyes' }
-          response = OpenStruct.new(:status => rcode, :body => { 'response' => data })
+          response = OpenStruct.new(:status => rcode, :body => { :response => data })
           expect(client.respond(response)).to eq(data)
         end
 
@@ -24,13 +24,13 @@ describe Tumblr::Request do
 
       it 'should return the meta object (merged with response)' do
         meta = { :message => 'ohno' }
-        response = OpenStruct.new(:status => 401, :body => { 'meta' => meta, 'response' => { :also => 'hi' } })
+        response = OpenStruct.new(:status => 401, :body => { :meta => meta, :response => { :also => 'hi' } })
         expect(client.respond(response)).to eq({ :message => 'ohno', :also => 'hi' })
       end
 
       it 'should return the meta object even when response is nil' do
         meta = { :message => 'ohno' }
-        response = OpenStruct.new(:status => 401, :body => { 'meta' => meta, 'response' => nil })
+        response = OpenStruct.new(:status => 401, :body => { :meta => meta, :response => nil })
         expect(client.respond(response)).to eq(meta)
       end
 
@@ -46,7 +46,7 @@ describe Tumblr::Request do
       expect(client).to receive(:get_response).once.with(@path, @params).
       and_return(OpenStruct.new({
         :status => 200,
-        :body => { 'response' => 'result' }
+        :body => { :response => 'result' }
       }))
     end
 
@@ -86,7 +86,7 @@ describe Tumblr::Request do
         expect(client).to receive(:get_response).once.with(@path, @params).
         and_return(OpenStruct.new({
           :status => 401,
-          :body => { 'meta' => @meta }
+          :body => { :meta => @meta }
         }))
       end
 

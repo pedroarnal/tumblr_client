@@ -22,7 +22,7 @@ module Tumblr
       if response.status == REDIRECT_STATUS
         response.headers['Location']
       else
-        response.body['meta']
+        response.body[:meta]
       end
     end
 
@@ -67,11 +67,11 @@ module Tumblr
 
     def respond(response)
       if SUCCESS_CODES.include?(response.status)
-        response.body['response']
+        response.body[:response]
       else
         # surface the meta alongside response
-        res = response.body['meta'] || {}
-        res.merge! response.body['response'] if response.body['response'].is_a?(Hash)
+        res = response.body[:meta] || {}
+        res.merge! response.body[:response] if response.body[:response].is_a?(Hash)
         res
       end
     end

@@ -12,7 +12,7 @@ module Tumblr
         conn.request :oauth1, 'header', **credentials
         conn.request :multipart
         conn.request :url_encoded
-        conn.response :json, content_type: /\bjson$/
+        conn.response :json, parser_options: { symbolize_names: true }
         conn.use Faraday::Response::RaiseError
         conn.adapter Faraday.default_adapter
         conn.headers.update(

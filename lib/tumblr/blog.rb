@@ -88,6 +88,16 @@ module Tumblr
       post(blog_path(blog_name, 'posts/queue/shuffle'))
     end
 
+    # Update blog's queue settings (if authorized)
+    def configure_queue(blog_name, **options)
+      validate_options([:post_frequency, :start_hour, :end_hour, :paused], options)
+      post(blog_path(blog_name, 'posts/queue/settings'), options)
+    end
+
+    def queue_settings(blog_name)
+      get(blog_path(blog_name, 'posts/queue/settings'))
+    end
+
     # Get drafts posts from blog (if authorized)
     def draft(blog_name, **options)
       validate_options([:limit, :before_id], options)

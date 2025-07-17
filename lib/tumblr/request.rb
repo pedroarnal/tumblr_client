@@ -27,12 +27,12 @@ module Tumblr
     end
 
     # Performs a get request
-    def get(path, params={})
+    def get(path, params = {})
       respond get_response(path, params)
     end
 
     # Performs post request
-    def post(path, params={})
+    def post(path, params = {})
       if Array === params[:tags]
         params[:tags] = params[:tags].join(',')
       end
@@ -40,12 +40,12 @@ module Tumblr
         req.url path
         req.body = params unless params.empty?
       end
-      #Check for errors and encapsulate
+      # Check for errors and encapsulate
       respond(response)
     end
 
     # Performs put request
-    def put(path, params={})
+    def put(path, params = {})
       if Array === params[:tags]
         params[:tags] = params[:tags].join(',')
       end
@@ -57,7 +57,7 @@ module Tumblr
     end
 
     # Performs delete request
-    def delete(path, params={})
+    def delete(path, params = {})
       response = connection.delete do |req|
         req.url path
         req.body = params unless params.empty?

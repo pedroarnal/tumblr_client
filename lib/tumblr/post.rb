@@ -9,14 +9,14 @@ module Tumblr
     DATA_POST_TYPES = [:audio, :video, :photo]
     VALID_POST_TYPES = DATA_POST_TYPES + [:quote, :text, :link, :chat]
 
-    def edit(blog_name, options = {})
+    def edit(blog_name, **options)
       convert_source_array :source, options
       extract_data!(options) if DATA_POST_TYPES.include?(options[:type])
 
       post(blog_path(blog_name, 'post/edit'), options)
     end
 
-    def reblog(blog_name, options = {})
+    def reblog(blog_name, **options)
       post(blog_path(blog_name, 'post/reblog'), options)
     end
 
@@ -24,7 +24,7 @@ module Tumblr
       post(blog_path(blog_name, 'post/delete'), id: id)
     end
 
-    def photo(blog_name, options = {})
+    def photo(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:caption, :link, :data, :source, :photoset_layout]
       validate_options(valid_opts, options)
       validate_no_collision options, [:data, :source]
@@ -35,7 +35,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def quote(blog_name, options = {})
+    def quote(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:quote, :source]
       validate_options(valid_opts, options)
 
@@ -43,7 +43,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def text(blog_name, options = {})
+    def text(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:title, :body]
       validate_options(valid_opts, options)
 
@@ -51,7 +51,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def link(blog_name, options = {})
+    def link(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:title, :url, :description]
       validate_options(valid_opts, options)
 
@@ -59,7 +59,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def chat(blog_name, options = {})
+    def chat(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:title, :conversation]
       validate_options(valid_opts, options)
 
@@ -67,7 +67,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def audio(blog_name, options = {})
+    def audio(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:data, :caption, :external_url]
       validate_options(valid_opts, options)
       validate_no_collision options, [:data, :external_url]
@@ -77,7 +77,7 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def video(blog_name, options = {})
+    def video(blog_name, **options)
       valid_opts = STANDARD_POST_OPTIONS + [:data, :embed, :caption]
       validate_options(valid_opts, options)
       validate_no_collision options, [:data, :embed]
@@ -87,9 +87,9 @@ module Tumblr
       post(post_path(blog_name), options)
     end
 
-    def create_post(type, blog_name, options = {})
+    def create_post(type, blog_name, **options)
       if VALID_POST_TYPES.include?(type)
-        send(type, blog_name, options)
+        send(type, blog_name, **options)
       else
         raise ArgumentError.new "\"#{type}\" is not a valid post type"
       end

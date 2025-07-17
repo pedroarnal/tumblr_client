@@ -150,7 +150,7 @@ describe Tumblr::Post do
       end
 
       it 'should call the right method and grab the return' do
-        expect(client.create_post(:photo, blog_name, args)).to eq('hi')
+        expect(client.create_post(:photo, blog_name, **args)).to eq('hi')
       end
 
     end
@@ -159,7 +159,7 @@ describe Tumblr::Post do
 
       it 'should raise an error' do
         expect {
-          client.create_post(:fake, blog_name, args)
+          client.create_post(:fake, blog_name, **args)
         }.to raise_error ArgumentError, '"fake" is not a valid post type'
       end
 

@@ -7,12 +7,12 @@ the [Tumblr API](https://www.tumblr.com/docs/en/api/v2).
 
 ## AI Assistant Use Disclaimer
 
-@pedroarnal has used Claude Code, an AI assistant by Anthropic, to support the codebase update to Ruby 3.4. The AI is
-used as a development tool while maintaining human oversight of all changes.
+@pedroarnal has used Claude Code, an AI assistant by Anthropic, to support the codebase update to Ruby 3.4 and Ruby 4.0.
+The AI is used as a development tool while maintaining human oversight of all changes.
 
 ## Requirements
 
-* Ruby >= 3.4.0
+* Ruby >= 3.4.0, < 5.0
 
 ## Installation
 

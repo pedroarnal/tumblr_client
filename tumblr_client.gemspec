@@ -2,7 +2,7 @@
 require File.join(File.dirname(__FILE__), 'lib/tumblr/version')
 
 Gem::Specification.new do |gem|
-  gem.required_ruby_version = '>= 3.4.0'
+  gem.required_ruby_version = '>= 3.4.0', '< 5.0'
   gem.add_dependency 'faraday', '~> 2.0'
   gem.add_dependency 'faraday-multipart'
   gem.add_dependency 'json'
@@ -10,6 +10,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'oauth'
   gem.add_dependency 'mime-types'
   gem.add_dependency 'base64'
+  gem.add_dependency 'cgi', '~> 0.4.2'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'rdoc'

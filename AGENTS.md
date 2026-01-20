@@ -16,27 +16,3 @@ Use `@/openspec/AGENTS.md` to learn:
 Keep this managed block so 'openspec update' can refresh the instructions.
 
 <!-- OPENSPEC:END -->
-
-# Core files
-
-# Common commands
-
-# Utility functions
-
-# Developer environment setup
-
-# Documentation Goals
-
-# Code style guidelines
-
-# Testing instructions
-
-# Repository etiquette
-
-# Context Management
-
-## Files to ignore
-
-Ignore the files in the following folders, not adding them to the context unless specifically requested:
-* tmp
-* vendor

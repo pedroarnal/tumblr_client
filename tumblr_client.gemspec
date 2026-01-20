@@ -5,7 +5,6 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 3.4.0'
   gem.add_dependency 'faraday', '~> 2.0'
   gem.add_dependency 'faraday-multipart'
-  gem.add_dependency 'faraday-oauth1'
   gem.add_dependency 'json'
   gem.add_dependency 'simple_oauth'
   gem.add_dependency 'oauth'

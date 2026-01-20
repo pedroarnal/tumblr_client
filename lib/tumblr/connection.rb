@@ -2,14 +2,14 @@
 
 require 'faraday'
 require 'faraday/multipart'
-require 'faraday/oauth1'
+require 'tumblr/oauth1_middleware'
 
 module Tumblr
   module Connection
 
     def connection
       Faraday.new(url: "#{api_scheme}://#{api_host}/") do |conn|
-        conn.request :oauth1, 'header', **credentials
+        conn.request :tumblr_oauth1, **credentials
         conn.request :multipart
         conn.request :url_encoded
         conn.response :json, parser_options: { symbolize_names: true }
